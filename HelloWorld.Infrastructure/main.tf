@@ -1,10 +1,17 @@
+provider "azurerm" {
+    version = "=1.20.00"
+}
+
+
 variable "applicationname" {
     default = "helloworld"
 }
-
-variable "subscription" {}
-variable "resourcegroup" {}
-variable "location" {}
+variable "resourcegroup" {
+    default = "hw-rs-01"
+}
+variable "location" {
+    default = "uksouth"
+}
 
 
 resource "azurerm_resource_group" "resourcegroup" {
