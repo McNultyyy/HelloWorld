@@ -13,17 +13,17 @@ install:
   
   - az login --service-principal -u $CLIENT_ID -p $CLIENT_SECRET --tenant $TENANT_ID
 
-
 jobs:
   include:
+  
     - stage: Infrastructure - Format
       script: 
         - cd HelloWorld.Infrastructure
         - terraform fmt
     - stage: Infrastructure - Deploy
       script:
+        - cd HelloWorld.Infrastructure
         - terraform apply
-        - cd ..
 
     - stage: Application - Build
       script:
@@ -31,6 +31,9 @@ jobs:
         - npm install
     - stage: Application - Test
       script:
+        - cd HelloWorld.Application
         - npm test
     - stage: Application - Deploy
+      script:
+        - cd HelloWorld.Application
         - ng build --prod
