@@ -12,4 +12,25 @@ install:
   - sudo apt-get install azure-cli
   
   - az login --service-principal -u $CLIENT_ID -p $CLIENT_SECRET --tenant $TENANT_ID
-  - terraform apply HelloWorld.Infrastructure/main.tf
+
+
+jobs:
+  include:
+    - stage: Infrastructure - Format
+      script: 
+        - cd HelloWorld.Infrastructure
+        - terraform fmt
+    - stage: Infrastructure - Deploy
+      script:
+        - terraform apply
+        - cd ..
+
+    - stage: Application - Build
+      script:
+        - cd HelloWorld.Application
+        - npm install
+    - stage: Application - Test
+      script:
+        - npm test
+    - stage: Application - Deploy
+        - ng build --prod
