@@ -7,5 +7,5 @@ install:
   - sudo apt-get install apt-transport-https lsb-release software-properties-common -y
   - AZ_REPO=$(lsb_release -cs)
   - echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
-  - terraform apply HelloWorld.Infrastructure/main.tf
   - az login --service-principal -u $CLIENT_ID -p $CLIENT_SECRET --tenant $TENANT_ID
+  - terraform apply HelloWorld.Infrastructure/main.tf
