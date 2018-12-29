@@ -24,7 +24,7 @@ jobs:
 
         - terraform fmt
         - terraform init
-        - terraform apply -input=false
+        - terraform apply -auto-approve
     - stage: Application 
       script:
         - cd HelloWorld.Application
