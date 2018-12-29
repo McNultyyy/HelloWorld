@@ -23,6 +23,7 @@ jobs:
     - stage: Infrastructure - Deploy
       script:
         - cd HelloWorld.Infrastructure
+        - terraform init
         - terraform apply
 
     - stage: Application - Build
