@@ -11,30 +11,19 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install azure-cli
   
-  - az login --service-principal -u $CLIENT_ID -p $CLIENT_SECRET --tenant $TENANT_ID
 
 jobs:
   include:
-
-    - stage: Infrastructure - Format
+    - stage: Infrastructure
       script: 
         - cd HelloWorld.Infrastructure
+        - az login --service-principal -u $CLIENT_ID -p $CLIENT_SECRET --tenant $TENANT_ID
         - terraform fmt
-    - stage: Infrastructure - Deploy
-      script:
-        - cd HelloWorld.Infrastructure
         - terraform init
         - terraform apply
-
-    - stage: Application - Build
+    - stage: Application 
       script:
         - cd HelloWorld.Application
         - npm install
-    - stage: Application - Test
-      script:
-        - cd HelloWorld.Application
         - npm test
-    - stage: Application - Deploy
-      script:
-        - cd HelloWorld.Application
         - ng build --prod
