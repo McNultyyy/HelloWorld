@@ -20,12 +20,12 @@ variable "location" {
 
 
 resource "azurerm_resource_group" "resourcegroup" {
-  name     = "hwresourcegroup"
+  name     = "hwresourcegroup01"
   location = "${var.location}"
 }
 
 resource "azurerm_storage_account" "storageaccount" {
-  name                     = "hwstorage"
+  name                     = "hwstorage01"
   resource_group_name      = "${azurerm_resource_group.resourcegroup.name}"
   location                 = "${var.location}"
   account_tier             = "Standard"
