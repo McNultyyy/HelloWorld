@@ -10,6 +10,11 @@ before_install:
   - sudo apt-key --keyring /etc/apt/trusted.gpg.d/Microsoft.gpg adv --keyserver packages.microsoft.com --recv-keys BC528686B50D79E339D3721CEB3E94ADBE1229CF
   - sudo apt-get update
   - sudo apt-get install azure-cli
+  - export ARM_CLIENT_ID=$CLIENT_ID
+  - export ARM_CLIENT_SECRET=$CLIENT_SECRET
+  - export ARM_SUBSCRIPTION_ID=$SUBSCRIPTION_ID
+  - export ARM_TENANT_ID=$TENANT_ID
+  - export ARM_ACCESS_KEY=$ACCESS_KEY
   
 
 jobs:
@@ -17,12 +22,6 @@ jobs:
     - stage: Infrastructure
       script: 
         - cd HelloWorld.Infrastructure
-        - export ARM_CLIENT_ID=$CLIENT_ID
-        - export ARM_CLIENT_SECRET=$CLIENT_SECRET
-        - export ARM_SUBSCRIPTION_ID=$SUBSCRIPTION_ID
-        - export ARM_TENANT_ID=$TENANT_ID
-        - export ARM_ACCESS_KEY=$ACCESS_KEY
-
         - terraform fmt
         - terraform init
         - terraform apply -auto-approve
