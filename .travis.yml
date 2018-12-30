@@ -30,4 +30,4 @@ jobs:
       script:
         - cd HelloWorld.Application
         - npm install
-        - ng build --prod
+        - node node_modules/@angular/cli/bin/ng build --prod
