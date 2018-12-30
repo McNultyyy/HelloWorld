@@ -31,3 +31,4 @@ jobs:
         - cd HelloWorld.Application
         - npm install
         - node node_modules/@angular/cli/bin/ng build --prod
+        - az storage blob upload-batch -d www --account-name hwstorage01 -s dist/HelloWorld
