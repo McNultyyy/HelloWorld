@@ -1,3 +1,11 @@
+terraform {
+  backend "azurerm" {
+    storage_account_name = "terraformaccount"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+  }
+}
+
 provider "azurerm" {
     version = "=1.20.00"
 }
