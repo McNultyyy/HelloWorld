@@ -40,6 +40,6 @@ resource "azurerm_storage_container" "storagecontainer" {
   name                  = "www"
   resource_group_name   = "${azurerm_resource_group.resourcegroup.name}"
   storage_account_name  = "${azurerm_storage_account.storageaccount.name}"
-  container_access_type = "public"
+  container_access_type = "private"
 }
 
